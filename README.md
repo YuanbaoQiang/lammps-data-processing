@@ -21,7 +21,7 @@ In this script, you should input two parameters:
 
 **Output**
 If the two parameters you typed are log.50 and 0, the final name is log_50_0(normally).
- 
+
  <br />
 ##multicurves.py
 '''
@@ -34,3 +34,15 @@ I have also provided three sample txt files in examples/multicurves
 
 **Output**
 Rough preview of results(such as temp, e_bond, etc. parameters you setted in thermo_style)
+
+ <br />
+
+##contour.py
+
+**Input**
+
+see files in example and py script
+
+**Output**
+
+a figure with subgraphs
