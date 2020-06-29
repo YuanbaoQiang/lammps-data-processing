@@ -1,0 +1,61 @@
+# ----------------- Init Section -----------------
+dimension 3
+boundary f f f
+neighbor 2.0 bin
+
+include "system.in.init"
+
+# ----------------- Atom Definition Section -----------------
+
+read_data "system.data"
+
+# ----------------- Settings Section -----------------
+
+include "system.in.settings"
+
+
+# ----------------- Run Section -----------------
+#  -- minimize --
+#  minimize 1.0e-5 1.0e-7 1000 10000
+
+#  -- declare time step for normal MD --
+timestep 1.0
+
+# -- define some variables --
+variable z equal 900-0.01*elapsed #target polymer height=70
+
+# -- initial setting --
+velocity all create 450 4928459
+
+# -- output setting --
+log log.opti
+thermo 100
+thermo_style custom step temp vol density
+dump 1 all custom 100 traj_relaxation.lammpstrj id mol type x y z ix iy iz
+
+# -- dynamics --
+fix 1 all nvt temp 450.0 450.0 100.0
+fix 2 all wall/reflect xlo EDGE xhi EDGE ylo EDGE yhi EDGE zlo EDGE zhi v_z
+run 83000
+unfix 1
+unfix 2
+write_data c178h358_opti.data
+write_restart c178h358_opti.restart
+
+fix 1 all nve
+fix 2 all langevin 450.0 450.0 100.0 699483
+fix 3 all wall/reflect xlo EDGE xhi EDGE ylo EDGE yhi EDGE zlo EDGE zhi 70
+run 10000
+unfix 1
+unfix 2
+unfix 3
+
+fix 1 all nvt temp 450.0 450.0 100.0
+fix 2 all wall/reflect xlo EDGE xhi EDGE ylo EDGE yhi EDGE zlo EDGE zhi 70
+run 20000
+unfix 1
+unfix 2
+
+# -- output --
+write_data relax.data
+write_restart relax.restart

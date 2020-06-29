@@ -1,0 +1,33 @@
+###############################################
+#-----------Wall slip simulation--------------
+#-----------Ni wall modeling------------------
+#-----------Yuanbaiqiang----------------------
+#-----------2020.06.25------------------------
+
+#-----------------------initial setting
+dimension		3
+boundary		p p s
+units			metal
+atom_style		full
+
+#-----------------------parameter setting
+variable 		x equal 22
+variable     		y equal 22
+variable 		z equal 30
+variable 		latparam equal 3.52
+variable		m equal 58.71
+
+#-----------------------creat geometry
+lattice 		fcc ${latparam} 
+region 			box block 0 $x 0 $y 0 $z units lattice
+create_box 		1 box
+create_atoms 		1 box
+region                  middle block 0 $x 0 $y 2 28 units lattice
+delete_atoms            region middle
+
+#-----------------------forcefield
+pair_style		eam 		
+pair_coeff		* * ./Ni_u3.eam	
+
+#-----------------------output
+write_data 		wall.data

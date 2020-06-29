@@ -1,0 +1,10 @@
+import "forcefield.lt"   # contains force-field parameters
+
+ch2 inherits ForceField {
+
+write("Data Atoms") {
+# atomId molId atomType charge x y z      
+$atom:ch2 $mol:... @atom:CH2 0.0 0.0 0.0 0.0
+}
+
+}

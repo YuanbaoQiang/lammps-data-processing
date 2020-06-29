@@ -1,0 +1,11 @@
+import "polymer.lt"
+
+write_once("Data Boundary") {
+  0 65 xlo xhi
+  0 65 ylo yhi
+  0 900 zlo zhi
+}
+
+pe_final = new Polymer [3].move(4.191225,0,0)
+		       [9].move(0,4.191225,0)
+		       [3].move(0,0,280)

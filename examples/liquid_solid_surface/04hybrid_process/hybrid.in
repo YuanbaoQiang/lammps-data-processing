@@ -1,0 +1,34 @@
+###############################################
+#-----------Wall slip simulation--------------
+#-----------Ni and PE hybrid model------------
+#-----------Yuanbaiqiang----------------------
+#-----------2020.06.26------------------------
+
+# ----------------- Init Section -----------------
+dimension 3
+boundary p p f
+neighbor 2.0 bin
+include "system.in.init"
+
+# ----------------- Atom Definition Section -----------------
+read_data "relax.data" extra/atom/types 1
+read_data wall.data add append offset 2 1 1 1 0 shift 3.0 3.0 0.0
+
+group PE type 1 2
+group Ni type 3
+
+pair_style hybrid eam lj/cut 10.0
+pair_coeff 1 1 lj/cut 0.2265 3.93
+pair_coeff 2 2 lj/cut 0.0933 3.93
+pair_coeff 3 3 eam ./Ni_u3.eam
+
+pair_coeff 1 3 lj/cut 1.8567 3.0845
+pair_coeff 2 3 lj/cut 1.1916 3.0845 
+
+
+bond_coeff 1    450     1.54
+angle_coeff 1 62.1 114
+dihedral_coeff  1       4 2 4.01 0.271 -6.29
+# ----------------- Output -----------------
+write_data hybrid.data
+write_restart hybrid.restart

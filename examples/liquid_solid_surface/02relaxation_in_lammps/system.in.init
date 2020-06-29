@@ -1,0 +1,6 @@
+units real
+atom_style full
+bond_style harmonic
+angle_style harmonic
+dihedral_style nharmonic 
+pair_style lj/cut 10.0

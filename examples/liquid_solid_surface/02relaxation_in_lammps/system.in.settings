@@ -1,0 +1,9 @@
+#atomType1 atomType2	epsilon sigma
+pair_coeff 2 2 0.0933 3.93
+pair_coeff 1 1 0.2265 3.93 		
+#bond-type	k 	r0
+bond_coeff 1	450	1.54
+#angle-type 		k 	theta0
+angle_coeff 1 62.1 114
+
+dihedral_coeff  1	4 2 4.01 0.271 -6.29
