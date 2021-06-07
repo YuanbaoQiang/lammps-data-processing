@@ -75,6 +75,8 @@ os.chdir(target_dir)
 # 将符合*.profile条件的数据文件都加入到列表中
 file = glob.glob(os.path.join("*.profile"))
 
+print(file)
+
 # 判空操作，如果file中无数据文件，有两种可能：
 # 1. 输入的路径地址不对
 # 2. 数据文件格式不符合，可自行修改
@@ -94,8 +96,11 @@ prefix_name_of_file = []
 for i in range(0, len(file)):
     print(str(i) + ": " + file[i])
 
-    # 获取文件的前缀名称
-    prefix_name_of_file.append(file[i][:-7])
+    # 获取文件的文件名称（该方式下windows和linux得到的数据不同）
+    # prefix_name_of_file.append(file[i][:-7])
+    
+    # 采用split获得文件名
+    prefix_name_of_file.append(file[i].split(".")[0])
 
 # print("根据👆👆👆👆👆👆👆列表，选择你要读取的文件编号！")
 input_file_name_index = int(input('>>> 请输入数据文件编号 <input_file_name_index> : '))
