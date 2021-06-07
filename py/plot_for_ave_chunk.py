@@ -207,8 +207,9 @@ def plot_distribution(count, n_fre, time_step, initial_time, file_delta):
     """绘制（温度、速度）1d分布曲线
 
     :param count: 一张图上共有count条曲线
+    :param n_fre: ave/chunk中的采样步数
+    :param time_step: Lammps运行的时间步数
     :param initial_time: 第一条曲线的时间点，单位为ps
-    :param n_fre: 数据采样间隔
     :param file_delta: 输出曲线的间隔量，1代表隔一个数据文件输出一条曲线，2代表每隔两个数据文件输出一条曲线
     """
     
