@@ -1,48 +1,22 @@
-# LAMMPS_TOOLBOX
+# lammps-data-processing
 
-"""
-@author: YuanbaoQiang
-"""
+对于开源分子动力学模拟软件`Lammps`导出的大量数据文件，其实是不太适合利用`Excel`或者`Origin`等常规软件来进行数据处理和绘图的。而笔者从2020年正式学习`Lammps`开始的时候就做了利用`Python`进行全流程（后处理+科研绘图）的尝试，也都取得了相关的论文成果，论文中结构示意图以外的数据图都是采用`Python`来进行的。
 
-##log.py
+# 前期基础
 
-'''
-This is a simple script to deal with log file from Lammps
+## 博客
 
-Only one file can be exported at a time
-'''
+早期的博客以及后期的一些数据处理相关的博客都是有关我的科研，笔者也是一点一滴过来的，相信坚持一件事总会有所收获！
 
-**Input**
-You should follow the point shown in the running window.
-In this script, you should input two parameters:
++ [快乐学术猿_YuanbaoQiang_CSDN博客-LeetCode,剑指offer刷题记录,科研记录领域博主](https://blog.csdn.net/qyb19970829)
 
-1. The full name of log file you need to deal with;
-2. The loop number, start from zero, and must be a integer.
+## 论文
 
-**Output**
-If the two parameters you typed are log.50 and 0, the final name is log_50_0(normally).
+**论文1**
 
- <br />
-##multicurves.py
-'''
-This is a simple script to deal with txt files output from **log.py**
-Keep only txt files and multicurve.py in the same folder
-I have also provided three sample txt files in examples/multicurves
-'''
-**Input**
-*.txt files;
++ **原文链接**：[Progressive Molecular Rearrangement and Heat Generation of Amorphous Polyethene Under Sliding Friction: Insight from the United-Atom Molecular Dynamics Simulations | Langmuir (acs.org)](https://pubs.acs.org/doi/10.1021/acs.langmuir.0c01949)
++ **审稿意见及回复**：[10.1021-acs.langmuir.0c01949](https://github.com/YuanbaoQiang/10.1021-acs.langmuir.0c01949)
 
-**Output**
-Rough preview of results(such as temp, e_bond, etc. parameters you setted in thermo_style)
+# 仓库内容
 
- <br />
-
-##contour.py
-
-**Input**
-
-see files in example and py script
-
-**Output**
-
-a figure with subgraphs
+待更新...
