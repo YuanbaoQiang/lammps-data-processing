@@ -201,6 +201,9 @@ def plot_cloud(m, n, n_fre, time_step, initial_time, file_delta):
     rect = [l, b, w, h] 
     cbar_ax = main_fig.add_axes(rect) 
     plt.colorbar(subfig_list[-1], cax = cbar_ax)
+    
+    # 导出图片
+    save_pic(dir_list[selected_dir_index] + '_test.png')
 
 
 def plot_distribution(count, n_fre, time_step, initial_time, file_delta):
@@ -228,8 +231,22 @@ def plot_distribution(count, n_fre, time_step, initial_time, file_delta):
         plt.ylabel( 'Temperature'+'$\ (K)$')
     elif velocity_distribution_flag:
         plt.ylabel( 'Velocity'+'$\ (\AA \ / \ fs)$')
+        
+    # 导出图片
+    save_pic(dir_list[selected_dir_index] + '_test.png')
     
-            
+def save_pic(pic_name):
+    """保存绘制的图片
+
+    :param pic_name: 图片名称
+    """
+    pic_path = target_dir + './' + dir_list[selected_dir_index] + './' + 'pic'
+    # 如果不存在该文件夹，则创建
+    if not os.path.exists(pic_path):
+        # 创建文件夹
+        os.makedirs(pic_path)
+    plt.savefig(pic_path + './' + pic_name)
+        
     
 def initial_time_to_file_index(initial_time, n_fre, time_step):
     """根据时间点返回对应的文件下标
